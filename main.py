@@ -22,7 +22,10 @@ def bu_creator(bu_ref,bu_name,bu_desc):
     response = requests.request("POST", business_unit_endpoint, headers=headers, data=payload)
 
     #print(response.text)
-    print(response,f"{bu_name} was created successfully!")
+    if response.status_code == 201:
+        print(f"Status code 201: {bu_name} was added successfully!")
+    else:
+        print(f"Status code {response.status_code}: {bu_name} was not added!")
 
 #sheet_name = "Sheet1"  # Replace "Sheet1" with the actual sheet name you want to read
 
